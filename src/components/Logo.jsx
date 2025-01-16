@@ -3,7 +3,7 @@ const Logo = () => {
     <>
       <img
         className="w-full h-full"
-        src="../../../public/gerinda_humbahas_logo.png"
+        src="/gerinda_humbahas_logo.png"
         alt="gerinda_humbahas"
       />
     </>

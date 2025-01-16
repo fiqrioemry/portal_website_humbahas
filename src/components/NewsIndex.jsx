@@ -5,7 +5,7 @@ import useToastMessage from "../hooks/useToastMessage";
 const NewsIndex = ({ name }) => {
   const { handleShowToast } = useToastMessage();
   return (
-    <div className="w-56 text-sm py-4 px-2 md:block flex gap-6">
+    <div className="w-full md:w-56 text-sm py-4 px-2 md:block flex gap-6">
       <Link
         to={`/index/${name}`}
         className="flex justify-end font-semibold cursor-pointer"

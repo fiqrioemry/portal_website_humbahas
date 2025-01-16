@@ -18,7 +18,7 @@ const IndexCard = () => {
     <div>
       <div className="">
         <div className="grid grid-cols-10 gap-4">
-          <div className="col-span-7 border border-muted">
+          <div className="col-span-10 md:col-span-7 border border-muted">
             <div>
               <div className="py-12 bg-muted border-b px-6 ">
                 <h1>Index Berita {currentName}</h1>
@@ -45,7 +45,7 @@ const IndexCard = () => {
           </div>
 
           {/* Arsip berita */}
-          <div className="col-span-3 border border-muted">
+          <div className="md:block hidden col-span-3 border border-muted">
             <div className="py-12 bg-muted border-b px-6 ">
               <h1>Arsip Berita </h1>
             </div>
