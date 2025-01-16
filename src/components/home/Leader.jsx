@@ -20,7 +20,7 @@ const Leader = () => {
                 aut reiciendis sint repudiandae quas quam qui veritatis et
                 perspiciatis tempora eos, aspernatur aperiam laudantium odio hic
                 explicabo eveniet iusto nobis rerum molestiae praesentium quia
-                commodi adipisci soluta. Fugit, laborum et.
+                commodi adipisci soluta. Fugit.
               </p>
             </div>
 
