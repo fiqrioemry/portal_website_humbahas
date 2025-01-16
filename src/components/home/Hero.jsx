@@ -4,7 +4,7 @@ const Hero = () => {
       className="relative h-screen bg-cover bg-center "
       style={{ backgroundImage: "url(/humbahas_hero_image.png)" }}
     >
-      <div className="absolute grid grid-cols-4 bottom-0 md:bottom-[5rem] lg:bottom-[7rem] px-4">
+      <div className="absolute grid grid-cols-4 bottom-10 md:bottom-[5rem] lg:bottom-[7rem] px-4">
         <div className="col-span-4 md:col-span-3 space-y-6">
           <div>
             <h1 className="text-active font-bold">VISI</h1>

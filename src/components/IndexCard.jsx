@@ -3,7 +3,6 @@ import { newsList } from "../config";
 import { PaginationBox } from "./PaginationBox";
 import { Link, useLocation } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 const IndexCard = () => {
   const itemsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);

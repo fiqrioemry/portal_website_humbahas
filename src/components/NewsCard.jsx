@@ -5,6 +5,16 @@ import NewsAuthor from "./NewsAuthor";
 const NewsCard = ({ news }) => {
   const location = useLocation();
   const basePoint = location.pathname;
+
+  // Fungsi untuk membatasi konten hingga 50 kata
+  const truncateContent = (content, wordLimit) => {
+    const words = content.split(" ");
+    if (words.length > wordLimit) {
+      return `${words.slice(0, wordLimit).join(" ")}...`;
+    }
+    return content;
+  };
+
   return (
     <div className="py-6 px-4 space-y-4 md:space-y-2 border">
       <div className="grid grid-cols-5 gap-2">
@@ -13,7 +23,12 @@ const NewsCard = ({ news }) => {
           <Link to={`${basePoint}/${news.slug}`}>
             <h2 className="text-blue-800">{news.subtitle}</h2>
           </Link>
-          <p className="md:text-md text-sm text-justify">{news.content}</p>
+          <p className="md:text-md text-sm text-justify">
+            {truncateContent(news.content, 30)}{" "}
+            <Link to={`${basePoint}/${news.slug}`}>
+              <span className="text-blue-500">selengkapnya</span>
+            </Link>
+          </p>
         </div>
         <div className="md:block hidden col-span-1">
           <img
