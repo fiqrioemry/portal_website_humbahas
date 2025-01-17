@@ -4,11 +4,12 @@ import { navLinks } from "../../config";
 import { Input } from "@/components/ui/input";
 import { Link, useLocation } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import SearchResult from "./SearchResult";
 
 export function NavMenuMobile() {
   const location = useLocation();
   const getBaseName = (path) => {
-    const parts = path.split("/").filter(Boolean); //
+    const parts = path.split("/").filter(Boolean);
     return parts[0];
   };
 
@@ -20,11 +21,7 @@ export function NavMenuMobile() {
       <SheetContent>
         <nav className="py-6 space-y-4">
           <div className="flex items-center space-x-4">
-            <Input
-              id="search"
-              className="w-96 h-10 outline-none"
-              placeholder="Pencarian"
-            />
+            <SearchResult />
           </div>
 
           <div
