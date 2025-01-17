@@ -14,7 +14,7 @@ const SearchResult = () => {
     const { value } = e.target;
     setForm(value);
   };
-
+  console.log(isFocused);
   const handleSearch = (form) => {
     if (!form.trim()) {
       setResult([]);
@@ -63,10 +63,6 @@ const SearchResult = () => {
     setIsFocused(true);
   };
 
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-
   const handleClickResult = () => {
     setForm("");
     setResult([]);
@@ -83,8 +79,7 @@ const SearchResult = () => {
         onChange={handleChange}
         className="w-96"
         placeholder="Pencarian"
-        onFocus={handleFocus} // Menambahkan event onFocus
-        onBlur={handleBlur} // Menambahkan event onBlur
+        onFocus={handleFocus}
       />
       {form &&
         isFocused && ( // Tampilkan dropdown saat form tidak kosong atau input fokus
