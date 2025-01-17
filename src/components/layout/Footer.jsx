@@ -6,7 +6,7 @@ const Footer = () => {
   const { handleShowToast } = useToastMessage();
   return (
     <footer className="bg-muted">
-      <div className="py-12 px-10">
+      <div className="py-12 px-2 md:px-10">
         <div className="grid grid-cols-5 gap-6">
           <div className="col-span-5 md:col-span-3 space-y-6">
             <div className="flex md:justify-start justify-center">
@@ -15,7 +15,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div>
+            <div className="text-justify">
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias
                 optio nostrum, unde porro ipsa enim? Sequi, distinctio magni

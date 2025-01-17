@@ -1,10 +1,14 @@
-import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Menu } from "lucide-react";
 import { navLinks } from "../../config";
-import { Input } from "@/components/ui/input";
-import { Link, useLocation } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import SearchResult from "./SearchResult";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 
 export function NavMenuMobile() {
   const location = useLocation();
@@ -20,7 +24,7 @@ export function NavMenuMobile() {
       </SheetTrigger>
       <SheetContent>
         <nav className="py-6 space-y-4">
-          <div className="flex items-center space-x-4">
+          <div>
             <SearchResult />
           </div>
 
@@ -39,7 +43,7 @@ export function NavMenuMobile() {
                       "border-accent border-b-[3px] py-6 text-accent": isActive,
                     })}
                   >
-                    {nav.title}
+                    <SheetClose>{nav.title}</SheetClose>
                   </Link>
                 </div>
               );

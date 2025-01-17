@@ -2,6 +2,7 @@ import React from "react";
 import { newsList } from "../../config";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
+import { SheetClose } from "@/components/ui/sheet";
 
 const SearchResult = () => {
   const inputRef = React.useRef(null);
@@ -77,13 +78,13 @@ const SearchResult = () => {
         name="search"
         value={form}
         onChange={handleChange}
-        className="w-96"
+        className="w-full md:w-96"
         placeholder="Pencarian"
         onFocus={handleFocus}
       />
       {form &&
         isFocused && ( // Tampilkan dropdown saat form tidak kosong atau input fokus
-          <div ref={dropdownRef} className="absolute top-12 w-full max-h-96 ">
+          <div ref={dropdownRef} className="absolute w-full top-12  max-h-96 ">
             <div className="rounded-md shadow-xl bg-muted">
               {result && result.length !== 0 ? (
                 result.map((item) => (
@@ -93,7 +94,7 @@ const SearchResult = () => {
                     onClick={handleClickResult} // Reset form dan tutup dropdown saat klik
                   >
                     <div className="py-2 px-4 text-xs">
-                      {item.title.slice(0, 60) + "..."}
+                      <SheetClose>{item.title.slice(0, 60) + "..."}</SheetClose>
                     </div>
                   </Link>
                 ))

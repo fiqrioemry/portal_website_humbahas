@@ -13,7 +13,7 @@ const NewsDetail = () => {
   const { title, subtitle, author, date, content } = selectedNews;
   return (
     <section className="py-6">
-      <div className="container mx-auto space-y-4">
+      <div className="container mx-auto space-y-4 md:px-0 px-2">
         <PageBreadCrumb />
         <div className="flex justify-center">
           <div className="space-y-6">
@@ -28,11 +28,12 @@ const NewsDetail = () => {
           </div>
         </div>
         <h4>{subtitle}</h4>
-        <div>{content}</div>
-        <div>{content}</div>
-        <div>{content}</div>
-        <div>{content}</div>
-        <div>{content}</div>
+        <div className="text-justify">{content}</div>
+        <div className="text-justify">{content}</div>
+        <div className="text-justify">{content}</div>
+        <div className="text-justify">{content}</div>
+        <div className="text-justify">{content}</div>
+        <div className="text-justify">{content}</div>
       </div>
     </section>
   );
