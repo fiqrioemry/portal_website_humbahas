@@ -11,7 +11,7 @@ const CerdasSehat = () => {
         <CerdasSehatCard title="terkoneksi" path="/news/terkoneksi" />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:mb-0 mb-6 py-0 md:py-6">
-        <div className="flex items-end col-start-2 md:col-start-1">
+        <div className="hidden md:flex items-end col-start-2 md:col-start-1">
           <Link to="/news" className="w-full">
             <div className="py-2 px-4 border text-background text-white border-background">
               Visit News
@@ -20,6 +20,13 @@ const CerdasSehat = () => {
         </div>
         <CerdasSehatCard title="sejahtera" path="/news/sejahtera" />
         <CerdasSehatCard title="sehat" path="/news/sehat" />
+        <div className="md:hidden flex items-end col-start-2 md:col-start-1">
+          <Link to="/news" className="w-full">
+            <div className="py-2 px-4 border text-background text-white border-background">
+              Visit News
+            </div>
+          </Link>
+        </div>
       </div>
     </section>
   );
