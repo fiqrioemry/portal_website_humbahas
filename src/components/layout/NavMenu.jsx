@@ -1,7 +1,7 @@
 import Logo from "../Logo";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NavMenuMobile } from "./NavMenuMobile";
 import { navLinks, newsList } from "../../config";
 import { Link, useLocation } from "react-router-dom";
@@ -15,17 +15,18 @@ const NavMenu = () => {
     return parts[0];
   };
 
-  const inputRef = React.useRef(null);
-  const dropdownRef = React.useRef(null);
-  const [form, setForm] = React.useState("");
-  const [result, setResult] = React.useState([]);
-  const [isFocused, setIsFocused] = React.useState(false);
+  const inputRef = useRef(null);
+  const dropdownRef = useRef(null);
+  const navRef = useRef(null);
+  const [form, setForm] = useState("");
+  const [result, setResult] = useState([]);
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleChange = (e) => {
     const { value } = e.target;
     setForm(value);
   };
-  console.log(isFocused);
+
   const handleSearch = (form) => {
     if (!form.trim()) {
       setResult([]);
@@ -43,7 +44,7 @@ const NavMenu = () => {
     setResult(slicedResults);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (form.trim() !== "") {
       handleSearch(form);
     } else {
@@ -52,19 +53,14 @@ const NavMenu = () => {
   }, [form]);
 
   const handleClickOutside = (e) => {
-    if (
-      inputRef.current &&
-      !inputRef.current.contains(e.target) &&
-      dropdownRef.current &&
-      !dropdownRef.current.contains(e.target)
-    ) {
+    if (navRef.current && !navRef.current.contains(e.target)) {
+      setOpen(false);
       setIsFocused(false);
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -76,13 +72,13 @@ const NavMenu = () => {
 
   const handleClickResult = () => {
     setForm("");
-    setOpen(!open);
+    setOpen(false);
     setResult([]);
     setIsFocused(false);
   };
 
   return (
-    <nav className="bg-accent">
+    <nav className="bg-accent" ref={navRef}>
       <div className="flex items-center h-[75px] justify-between px-4 md:px-12">
         <div className="h-8">
           <Logo />
