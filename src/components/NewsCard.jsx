@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Link, useLocation } from "react-router-dom";
 import NewsAuthor from "./NewsAuthor";
+import { Link, useLocation } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
   const location = useLocation();
   const basePoint = location.pathname;
 
-  // Fungsi untuk membatasi konten hingga 50 kata
   const truncateContent = (content, wordLimit) => {
     const words = content.split(" ");
     if (words.length > wordLimit) {
@@ -24,7 +23,7 @@ const NewsCard = ({ news }) => {
             <h2 className="text-blue-800">{news.subtitle}</h2>
           </Link>
           <p className="md:text-md text-sm text-justify">
-            {truncateContent(news.content, 30)}{" "}
+            {truncateContent(news.content, 30)}
             <Link to={`${basePoint}/${news.slug}`}>
               <span className="text-blue-500">selengkapnya</span>
             </Link>

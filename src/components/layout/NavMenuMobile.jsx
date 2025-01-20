@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import { navLinks } from "../../config";
-import SearchResult from "./SearchResult";
 import { Link, useLocation } from "react-router-dom";
 import {
   Sheet,
@@ -24,10 +23,6 @@ export function NavMenuMobile() {
       </SheetTrigger>
       <SheetContent>
         <nav className="py-6 space-y-4">
-          <div>
-            <SearchResult />
-          </div>
-
           <div
             aria-label="main navigation"
             className="flex items-center justify-center flex-col gap-8"
