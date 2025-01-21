@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 const Pengaduan = () => {
   return (
     <section className="py-6">
-      <div className="container mx-auto space-y-6 md:px-4 px-2">
+      <div className="container mx-auto space-y-6 md:px-4 px-6">
         <div>
           <h2>
             Selamat datang di halaman Call-Center Gerinda Humbang Hasundutan

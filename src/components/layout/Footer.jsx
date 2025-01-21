@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-5 gap-6">
           <div className="col-span-5 md:col-span-3 space-y-6">
             <div className="flex md:justify-start justify-center">
-              <div className="w-[400px]">
+              <div className="h-[200px]">
                 <Logo />
               </div>
             </div>

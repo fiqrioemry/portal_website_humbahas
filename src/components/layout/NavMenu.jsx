@@ -103,7 +103,7 @@ const NavMenu = () => {
   return (
     <nav className="bg-accent">
       <div className="flex items-center h-[75px] justify-between px-4 md:px-12">
-        <div className="h-[6rem]">
+        <div className="h-12 md:h-[3.5rem]">
           <Logo />
         </div>
 
