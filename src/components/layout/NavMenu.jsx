@@ -28,7 +28,7 @@ const NavMenu = () => {
     switch (activeMenu) {
       case "profile":
         return (
-          <div className="grid grid-cols-12 gap-4 px-12">
+          <div className=" grid grid-cols-12 gap-4 px-12">
             <div className="col-span-3 space-y-4 text-background">
               <h2>Profile</h2>
               <p>
@@ -108,7 +108,6 @@ const NavMenu = () => {
         </div>
 
         <div
-          ref={dropdownRef}
           aria-label="main navigation"
           className="hidden md:flex items-center space-x-12"
         >
@@ -170,7 +169,7 @@ const NavMenu = () => {
         ref={dropdownRef}
         className={cn(
           "fixed bg-accent-dark top-[75px] left-0 right-0 h-0 max-h-[20rem] overflow-hidden transition-all duration-300",
-          { "h-full": activeMenu }
+          { "h-[20rem]": activeMenu }
         )}
       >
         {renderDropdownContent()}
