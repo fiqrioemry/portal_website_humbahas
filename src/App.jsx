@@ -42,7 +42,6 @@ function App() {
           </Route>
 
           <Route path="gallery" element={<Gallery />} />
-          <Route path="pejabat" element={<Pejabat />} />
           <Route path="lowongan" element={<Lowongan />} />
           <Route path="pengaduan" element={<Pengaduan />} />
           <Route path="/news/:slug/:slug" element={<NewsDetail />} />

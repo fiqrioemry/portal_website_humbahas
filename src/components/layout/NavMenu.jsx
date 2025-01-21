@@ -1,84 +1,107 @@
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
-import React, { useState, useRef, useEffect } from "react";
+import SearchInput from "./SearchInput";
 import { NavMenuMobile } from "./NavMenuMobile";
-import { navLinks, newsList } from "../../config";
-import { Link, useLocation } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const NavMenu = () => {
-  const location = useLocation();
-  const [open, setOpen] = useState(false);
-
-  const getBaseName = (path) => {
-    const parts = path.split("/").filter(Boolean);
-    return parts[0];
-  };
-
-  const inputRef = useRef(null);
   const dropdownRef = useRef(null);
-  const navRef = useRef(null);
-  const [form, setForm] = useState("");
-  const [result, setResult] = useState([]);
-  const [isFocused, setIsFocused] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
 
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setForm(value);
-  };
-
-  const handleSearch = (form) => {
-    if (!form.trim()) {
-      setResult([]);
-      return;
-    }
-
-    const filteredResults = newsList.filter(
-      (news) =>
-        news.title.toLowerCase().includes(form.toLowerCase()) ||
-        news.subtitle.toLowerCase().includes(form.toLowerCase()) ||
-        news.content.toLowerCase().includes(form.toLowerCase())
-    );
-
-    const slicedResults = filteredResults.slice(0, 5);
-    setResult(slicedResults);
+  const toggleMenu = (menu) => {
+    setActiveMenu((prev) => (prev === menu ? null : menu));
   };
 
   useEffect(() => {
-    if (form.trim() !== "") {
-      handleSearch(form);
-    } else {
-      setResult([]);
-    }
-  }, [form]);
-
-  const handleClickOutside = (e) => {
-    if (navRef.current && !navRef.current.contains(e.target)) {
-      setOpen(false);
-      setIsFocused(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleClickOutside = (e) => {
+      if (!dropdownRef.current?.contains(e.target)) setActiveMenu(null);
     };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleClickResult = () => {
-    setForm("");
-    setOpen(false);
-    setResult([]);
-    setIsFocused(false);
+  const renderDropdownContent = () => {
+    switch (activeMenu) {
+      case "profile":
+        return (
+          <div className="grid grid-cols-12 gap-4 px-12">
+            <div className="col-span-3 space-y-4 text-background">
+              <h2>Profile</h2>
+              <p>
+                Konten dropdown untuk menu <b>profile</b>. Lorem ipsum dolor sit
+                amet consectetur, adipisicing elit. Eveniet earum autem, totam
+                cupiditate nemo rem!
+              </p>
+              <button className="py-3 w-60 border border-background bg-accent text-background hover:text-accent hover:bg-background transition-all font-semibold">
+                Explore
+              </button>
+            </div>
+            <div className="col-span-6  text-background">
+              {["Deklarasi", "Sejarah", "Visi Misi", "Tugas dan Fungsi"].map(
+                (item) => (
+                  <div
+                    key={item}
+                    className="group flex items-center hover:bg-accent h-12 cursor-pointer border-b transition-all"
+                  >
+                    <div className="w-1.5 h-full bg-accent-dark group-hover:bg-active"></div>
+                    <div className="flex items-center justify-between w-full pr-2">
+                      <span className="capitalize px-4">{item}</span>
+                      <ArrowRight />
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        );
+      case "news":
+        return (
+          <div className="grid grid-cols-12 gap-4 px-12">
+            <div className="col-span-3 space-y-4 text-background">
+              <h2>news</h2>
+              <p>
+                Konten dropdown untuk menu <b>news</b>. Lorem ipsum dolor sit
+                amet consectetur, adipisicing elit. Eveniet earum autem, totam
+                cupiditate nemo rem!
+              </p>
+              <button className="py-3 w-60 border border-background bg-accent text-background hover:text-accent hover:bg-background transition-all font-semibold">
+                Explore
+              </button>
+            </div>
+            <div className="col-span-6 text-background">
+              {[
+                "cerdas",
+                "nyaman",
+                "sehat",
+                "sejahtera",
+                "terkonesi",
+                "wisata",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="group flex items-center hover:bg-accent h-12 cursor-pointer border-b transition-all"
+                >
+                  <div className="w-1.5 h-full bg-accent-dark group-hover:bg-active"></div>
+                  <div className="flex items-center justify-between w-full pr-2">
+                    <span className="capitalize px-4">{item}</span>
+                    <ArrowRight />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
-    <nav className="bg-accent" ref={navRef}>
+    <nav className="bg-accent">
       <div className="flex items-center h-[75px] justify-between px-4 md:px-12">
         <div className="h-8">
           <Logo />
@@ -86,86 +109,70 @@ const NavMenu = () => {
 
         <div
           aria-label="main navigation"
-          className="hidden md:block space-x-12"
+          className="hidden md:flex items-center space-x-12"
         >
-          {navLinks.map((nav, index) => {
-            const isActive =
-              getBaseName(location.pathname) === getBaseName(nav.href);
-            return (
-              <Link
-                to={`${nav.href}`}
-                className={cn("uppercase text-background ", {
-                  "border-active border-b-[3px] py-6 text-active": isActive,
-                })}
-                key={index}
-              >
-                {nav.title}
-              </Link>
-            );
-          })}
+          {/* Menu profile */}
+
+          <div
+            ref={dropdownRef}
+            onClick={() => toggleMenu("profile")} // Toggle menu on click
+            className={cn(
+              "capitalize text-background cursor-pointer border-b-[3px] py-6",
+              {
+                "border-active text-active": activeMenu === "profile",
+                "border-transparent": activeMenu !== "profile",
+              }
+            )}
+          >
+            profile
+          </div>
+
+          {/* Menu news */}
+
+          <div
+            ref={dropdownRef}
+            onClick={() => toggleMenu("news")} // Toggle menu on click
+            className={cn(
+              "capitalize text-background cursor-pointer border-b-[3px] py-6",
+              {
+                "border-active text-active": activeMenu === "news",
+                "border-transparent": activeMenu !== "news",
+              }
+            )}
+          >
+            news
+          </div>
+
+          {/* Direct Links */}
+          {["pengaduan", "lowongan", "gallery"].map((menu) => (
+            <Link
+              key={menu}
+              to={`/${menu}`}
+              onClick={() => setActiveMenu(null)}
+              className="capitalize text-background cursor-pointer border-b-[3px] py-6 border-transparent hover:border-active"
+            >
+              {menu}
+            </Link>
+          ))}
         </div>
 
         <div className="relative flex space-x-4 items-center">
-          <div>
-            <div
-              onClick={() => setOpen(!open)}
-              className={cn(
-                "flex cursor-pointer space-x-2 py-6 text-background border-b-[3px] border-accent ",
-                { "border-active border-b-4": open }
-              )}
-            >
-              <Search />
-              <span className="hidden md:block">Search</span>
-            </div>
-            <div
-              className={cn(
-                "fixed bg-accent top-[75px] left-0 md:left-auto md:w-96 right-0 max-h-0 overflow-hidden duration-300 transition-all",
-                {
-                  "max-h-96": open,
-                }
-              )}
-            >
-              <div className="relative max-h-96">
-                <input
-                  ref={inputRef}
-                  id="search"
-                  name="search"
-                  value={form}
-                  onChange={handleChange}
-                  className="w-full bg-accent-dark h-12 py-2 px-4 text-background outline-none md:w-96"
-                  placeholder="Pencarian"
-                  onFocus={handleFocus}
-                />
-                {form && isFocused && (
-                  <div ref={dropdownRef} className="w-full max-h-96 ">
-                    <div className=" text-background shadow-xl bg-accent py-4">
-                      {result && result.length !== 0 ? (
-                        result.map((item) => (
-                          <Link
-                            to={`/news/${item.category}/${item.slug}`}
-                            key={item.id}
-                            onClick={handleClickResult}
-                          >
-                            <div className="py-2 px-4 text-xs">
-                              {item.title.slice(0, 60) + "..."}
-                            </div>
-                          </Link>
-                        ))
-                      ) : (
-                        <div className="py-2 text-xs w-full px-4">
-                          Hasil pencarian tidak ditemukan, coba keywords berbeda
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+          <SearchInput />
           <div className="md:hidden block">
             <NavMenuMobile />
           </div>
         </div>
+      </div>
+
+      {/* Dropdown Container */}
+      <div
+        ref={dropdownRef}
+        className={cn(
+          "fixed bg-accent-dark top-[75px] left-0 right-0 h-0 max-h-[20rem] overflow-hidden transition-all duration-300",
+          { "h-full": activeMenu }
+        )}
+      >
+        {renderDropdownContent()}
       </div>
     </nav>
   );

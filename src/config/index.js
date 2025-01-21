@@ -49,6 +49,101 @@ export const newsChildrenPath = [
   },
 ];
 
+export const faqData = [
+  {
+    question: "Apa visi dan misi Partai Gerindra di Humbang Hasundutan?",
+    answer: [
+      "Visi: Membangun Humbang Hasundutan yang sejahtera, adil, dan berdaya saing melalui kebijakan yang berpihak pada rakyat.",
+      "Misi:",
+      "Memberdayakan masyarakat melalui program-program pemberdayaan ekonomi dan pendidikan.",
+      "Meningkatkan akses pelayanan kesehatan dan infrastruktur.",
+      "Memperjuangkan aspirasi rakyat dalam pemerintahan.",
+    ],
+  },
+  {
+    question:
+      "Bagaimana cara menyampaikan aspirasi atau pengaduan kepada Partai Gerindra Humbang Hasundutan?",
+    answer: [
+      "Formulir Online: Isi formulir di halaman pengaduan website ini.",
+      "Kantor Sekretariat: Datang langsung ke kantor sekretariat di [Alamat Kantor].",
+      "Kontak WhatsApp: Hubungi kami melalui nomor WhatsApp resmi di [Nomor WA].",
+      "Email: Kirim email ke [Alamat Email].",
+    ],
+  },
+  {
+    question:
+      "Apa saja program unggulan Partai Gerindra di Humbang Hasundutan?",
+    answer: [
+      "Peningkatan kualitas infrastruktur desa.",
+      "Bantuan kepada petani dan nelayan lokal.",
+      "Program pelatihan kerja untuk generasi muda.",
+      "Beasiswa pendidikan untuk pelajar berprestasi.",
+    ],
+  },
+  {
+    question: "Bagaimana cara bergabung menjadi anggota Partai Gerindra?",
+    answer: [
+      "Isi Formulir Pendaftaran: Unduh atau isi langsung formulir pendaftaran di halaman 'Keanggotaan'.",
+      "Lampirkan Dokumen Pendukung: KTP dan pas foto terbaru.",
+      "Kirim ke Sekretariat: Kirim dokumen Anda melalui email atau langsung ke kantor sekretariat kami.",
+      "Tunggu konfirmasi dari tim kami.",
+    ],
+  },
+  {
+    question: "Apa saja syarat untuk menjadi kader Partai Gerindra?",
+    answer: [
+      "Warga negara Indonesia yang berdomisili di Humbang Hasundutan.",
+      "Usia minimal 17 tahun.",
+      "Memiliki komitmen terhadap visi dan misi partai.",
+      "Tidak sedang menjadi anggota partai politik lain.",
+    ],
+  },
+  {
+    question:
+      "Bagaimana cara mengetahui jadwal kegiatan atau agenda Partai Gerindra di Humbang Hasundutan?",
+    answer: [
+      "Jadwal kegiatan dan agenda partai dapat dilihat di halaman 'Agenda' di website ini.",
+      "Ikuti juga akun media sosial resmi kami untuk mendapatkan informasi terkini.",
+    ],
+  },
+  {
+    question:
+      "Apakah ada program bantuan sosial dari Partai Gerindra di Humbang Hasundutan?",
+    answer: [
+      "Bantuan untuk korban bencana alam.",
+      "Bantuan pendidikan bagi keluarga kurang mampu.",
+      "Pemberdayaan ekonomi untuk usaha mikro.",
+    ],
+  },
+  {
+    question:
+      "Bagaimana cara menghubungi DPC Partai Gerindra Humbang Hasundutan?",
+    answer: [
+      "Telepon: [Nomor Telepon Resmi]",
+      "WhatsApp: [Nomor WA Resmi]",
+      "Email: [Alamat Email Resmi]",
+      "Alamat Kantor: [Alamat Lengkap Kantor Sekretariat]",
+    ],
+  },
+  {
+    question:
+      "Apa saja cara Partai Gerindra membantu masyarakat Humbang Hasundutan?",
+    answer: [
+      "Mewakili aspirasi masyarakat di legislatif.",
+      "Memberikan bantuan hukum kepada masyarakat yang membutuhkan.",
+      "Mendukung program pemerintah yang pro-rakyat dan berpihak pada pembangunan daerah.",
+    ],
+  },
+  {
+    question:
+      "Bagaimana saya dapat memberikan donasi untuk mendukung kegiatan Partai Gerindra?",
+    answer: [
+      "Anda dapat memberikan donasi melalui rekening resmi yang tertera di halaman 'Donasi' website kami.",
+      "Pastikan transaksi dilakukan melalui kanal resmi untuk memastikan keamanan.",
+    ],
+  },
+];
+
 export const newsList = [
   {
     id: 1,
