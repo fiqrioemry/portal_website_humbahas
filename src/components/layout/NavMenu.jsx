@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
-import { NavMenuMobile } from "./NavMenuMobile";
 import { ArrowRight } from "lucide-react";
+import { NavMenuMobile } from "./NavMenuMobile";
+import { useState, useEffect, useRef } from "react";
 
 const NavMenu = () => {
   const dropdownRef = useRef(null);
@@ -115,7 +115,7 @@ const NavMenu = () => {
 
           <div
             ref={dropdownRef}
-            onClick={() => toggleMenu("profile")} // Toggle menu on click
+            onClick={() => toggleMenu("profile")}
             className={cn(
               "capitalize text-background cursor-pointer border-b-[3px] py-6",
               {
