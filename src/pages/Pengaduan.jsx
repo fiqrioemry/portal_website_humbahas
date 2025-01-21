@@ -44,7 +44,7 @@ const Pengaduan = () => {
             berarti bagi kami!
           </p>
         </div>
-        <div className="px-20">
+        <div>
           <form className="p-4 bg-muted">
             <div className="text-center">
               <h2>Formulir Pengaduan</h2>
@@ -80,7 +80,7 @@ const Pengaduan = () => {
           <Accordion type="multiple" collapsible>
             {faqData.map((item, index) => (
               <AccordionItem key={index} value={`item-${index + 1}`}>
-                <AccordionTrigger className="text-[16px]">
+                <AccordionTrigger className="text-sm md:text-[16px] text-start">
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent>
