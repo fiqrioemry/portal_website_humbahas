@@ -108,6 +108,7 @@ const NavMenu = () => {
         </div>
 
         <div
+          ref={dropdownRef}
           aria-label="main navigation"
           className="hidden md:flex items-center space-x-12"
         >
