@@ -9,7 +9,7 @@ const News = () => {
   return (
     <section>
       <div className="container mx-auto mb-10">
-        <div className="flex justify-center py-0 md:py-4">
+        <div className="flex justify-center py-0 md:py-4 px-4">
           <Tabs className="w-full">
             <TabsList className="grid grid-cols-6">
               {newsChildrenPath.map((item) => {

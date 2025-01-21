@@ -8,16 +8,16 @@ export const navLinks = [
     href: "/news",
   },
   {
-    title: "Call Center",
-    href: "/gallery",
-  },
-  {
-    title: "Lowongan",
+    title: "pengaduan",
     href: "/pengaduan",
   },
   {
-    title: "Struktur Organisasi",
+    title: "lowongan",
     href: "/lowongan",
+  },
+  {
+    title: "gallery",
+    href: "/gallery",
   },
 ];
 

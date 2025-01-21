@@ -13,7 +13,7 @@ const Terkoneksi = () => {
   return (
     <section>
       <div className="container mx-auto">
-        <div className="flex-col flex md:flex-row">
+        <div className="flex-col flex md:flex-row px-4 md:px-0">
           <NewsIndex name={name} />
           <div className="max-w-[50rem] w-full h-screen overflow-y-scroll">
             {/* index */}
