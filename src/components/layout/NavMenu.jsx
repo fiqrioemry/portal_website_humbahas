@@ -11,7 +11,11 @@ const NavMenu = () => {
   const [activeMenu, setActiveMenu] = useState(null);
 
   const toggleMenu = (menu) => {
-    setActiveMenu((prev) => (prev === menu ? null : menu));
+    if (activeMenu === menu) {
+      setActiveMenu(null);
+    } else {
+      setActiveMenu(menu);
+    }
   };
 
   useEffect(() => {
@@ -24,6 +28,17 @@ const NavMenu = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setActiveMenu(null);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const renderDropdownContent = () => {
     switch (activeMenu) {
       case "profile":
@@ -121,11 +136,11 @@ const NavMenu = () => {
         </div>
 
         <div
-          ref={dropdownRef}
           aria-label="main navigation"
           className="hidden md:flex items-center space-x-12"
         >
           <div
+            ref={dropdownRef}
             onClick={() => toggleMenu("profile")}
             className={cn(
               "capitalize text-background cursor-pointer border-b-[3px] py-6",
@@ -139,6 +154,7 @@ const NavMenu = () => {
           </div>
 
           <div
+            ref={dropdownRef}
             onClick={() => toggleMenu("news")}
             className={cn(
               "capitalize text-background cursor-pointer border-b-[3px] py-6",

@@ -4,13 +4,11 @@ const Leader = () => {
   return (
     <section className="space-y-6 md:py-0 py-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div
-          className="relative h-96 bg-center"
-          style={{
-            backgroundImage: "url(/leader.png)",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
+        <div className=" flex items-center justify-center p-4 ">
+          <div>
+            <img className="h-[325px]" src="/leader.png" alt="leader" />
+          </div>
+        </div>
         <div className="h-auto md:min-h-96  flex items-center justify-center md:justify-start pr-0 md:pr-12">
           <div className="space-y-6 ">
             <div className="text-center md:text-start space-y-3">

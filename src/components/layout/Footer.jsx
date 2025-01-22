@@ -1,4 +1,3 @@
-import Logo from "../Logo";
 import useToastMessage from "../../hooks/useToastMessage";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
@@ -11,7 +10,11 @@ const Footer = () => {
           <div className="col-span-5 md:col-span-3 space-y-6">
             <div className="flex md:justify-start justify-center">
               <div className="h-[200px]">
-                <Logo />
+                <img
+                  className="w-full h-full"
+                  src="/footer_logo.png"
+                  alt="gerinda_humbahas"
+                />
               </div>
             </div>
 
