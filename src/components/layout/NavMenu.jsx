@@ -29,48 +29,61 @@ const NavMenu = () => {
       case "profile":
         return (
           <div className=" grid grid-cols-12 gap-4 px-12">
-            <div className="col-span-3 space-y-4 text-background">
+            <div className="col-span-3 space-y-6 text-background">
               <h2>Profile</h2>
               <p>
                 Konten dropdown untuk menu <b>profile</b>. Lorem ipsum dolor sit
                 amet consectetur, adipisicing elit. Eveniet earum autem, totam
                 cupiditate nemo rem!
               </p>
-              <button className="py-3 w-60 border border-background bg-accent text-background hover:text-accent hover:bg-background transition-all font-semibold">
-                Explore
-              </button>
+              <div>
+                <Link to="/" onClick={() => toggleMenu("profile")}>
+                  <button className="py-3 w-60 border border-background bg-accent text-background hover:text-accent hover:bg-background transition-all font-semibold">
+                    Explore
+                  </button>
+                </Link>
+              </div>
             </div>
             <div className="col-span-6  text-background">
-              {["Deklarasi", "Sejarah", "Visi Misi", "Tugas dan Fungsi"].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="group flex items-center hover:bg-accent h-12 cursor-pointer border-b transition-all"
-                  >
-                    <div className="w-1.5 h-full bg-accent-dark group-hover:bg-active"></div>
-                    <div className="flex items-center justify-between w-full pr-2">
-                      <span className="capitalize px-4">{item}</span>
-                      <ArrowRight />
-                    </div>
+              {[
+                "Deklarasi",
+                "Sejarah",
+                "Visi Misi",
+                "Tugas dan Fungsi",
+                "Makna Lambang Gerindra",
+                "Struktur dan daftar Anggota",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="group flex items-center hover:bg-accent h-12 cursor-pointer border-b transition-all"
+                >
+                  <div className="w-1.5 h-full bg-accent-dark group-hover:bg-active"></div>
+                  <div className="flex items-center justify-between w-full pr-2">
+                    <span className="capitalize px-4">{item}</span>
+                    <ArrowRight />
                   </div>
-                )
-              )}
+                </div>
+              ))}
             </div>
           </div>
         );
       case "news":
         return (
           <div className="grid grid-cols-12 gap-4 px-12">
-            <div className="col-span-3 space-y-4 text-background">
+            <div className="col-span-3 space-y-6 text-background">
               <h2>news</h2>
               <p>
                 Konten dropdown untuk menu <b>news</b>. Lorem ipsum dolor sit
                 amet consectetur, adipisicing elit. Eveniet earum autem, totam
                 cupiditate nemo rem!
               </p>
-              <button className="py-3 w-60 border border-background bg-accent text-background hover:text-accent hover:bg-background transition-all font-semibold">
-                Explore
-              </button>
+              <div>
+                <Link to="/news/cerdas" onClick={() => toggleMenu("news")}>
+                  <button className="py-3 w-60 border border-background bg-accent text-background hover:text-accent hover:bg-background transition-all font-semibold">
+                    Explore
+                  </button>
+                </Link>
+              </div>
             </div>
             <div className="col-span-6 text-background">
               {[
@@ -108,13 +121,11 @@ const NavMenu = () => {
         </div>
 
         <div
+          ref={dropdownRef}
           aria-label="main navigation"
           className="hidden md:flex items-center space-x-12"
         >
-          {/* Menu profile */}
-
           <div
-            ref={dropdownRef}
             onClick={() => toggleMenu("profile")}
             className={cn(
               "capitalize text-background cursor-pointer border-b-[3px] py-6",
@@ -127,11 +138,8 @@ const NavMenu = () => {
             profile
           </div>
 
-          {/* Menu news */}
-
           <div
-            ref={dropdownRef}
-            onClick={() => toggleMenu("news")} // Toggle menu on click
+            onClick={() => toggleMenu("news")}
             className={cn(
               "capitalize text-background cursor-pointer border-b-[3px] py-6",
               {
@@ -169,7 +177,7 @@ const NavMenu = () => {
         ref={dropdownRef}
         className={cn(
           "fixed bg-accent-dark top-[75px] left-0 right-0 h-0 max-h-[20rem] overflow-hidden transition-all duration-300",
-          { "h-[20rem]": activeMenu }
+          { "h-full": activeMenu }
         )}
       >
         {renderDropdownContent()}
