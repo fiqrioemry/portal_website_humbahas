@@ -1,14 +1,14 @@
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
 import { ArrowRight } from "lucide-react";
 import { NavMenuMobile } from "./NavMenuMobile";
-import { useState, useEffect, useRef } from "react";
 
 const NavMenu = () => {
-  const dropdownRef = useRef(null);
   const [activeMenu, setActiveMenu] = useState(null);
+  const navRef = useRef(null); // Untuk referensi container navigasi
 
   const toggleMenu = (menu) => {
     if (activeMenu === menu) {
@@ -19,31 +19,37 @@ const NavMenu = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (!dropdownRef.current?.contains(e.target)) setActiveMenu(null);
+    const handleClickOutside = (event) => {
+      if (
+        navRef.current &&
+        !navRef.current.contains(event.target) // Jika klik di luar dropdown dan tombol toggle
+      ) {
+        setActiveMenu(null);
+      }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      setActiveMenu(null);
+      setActiveMenu(null); // Tutup dropdown jika jendela diubah ukurannya
     };
 
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   const renderDropdownContent = () => {
     switch (activeMenu) {
       case "profile":
         return (
-          <div className=" grid grid-cols-12 gap-4 px-12">
+          <div className="grid grid-cols-12 gap-4 px-12">
             <div className="col-span-3 space-y-6 text-background">
               <h2>Profile</h2>
               <p>
@@ -59,7 +65,7 @@ const NavMenu = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-span-6  text-background">
+            <div className="col-span-6 text-background">
               {[
                 "Deklarasi",
                 "Sejarah",
@@ -86,7 +92,7 @@ const NavMenu = () => {
         return (
           <div className="grid grid-cols-12 gap-4 px-12">
             <div className="col-span-3 space-y-6 text-background">
-              <h2>news</h2>
+              <h2>News</h2>
               <p>
                 Konten dropdown untuk menu <b>news</b>. Lorem ipsum dolor sit
                 amet consectetur, adipisicing elit. Eveniet earum autem, totam
@@ -129,7 +135,7 @@ const NavMenu = () => {
   };
 
   return (
-    <nav className="bg-accent">
+    <nav ref={navRef} className="bg-accent">
       <div className="flex items-center h-[75px] justify-between px-4 md:px-12">
         <div className="h-12 md:h-[3.5rem]">
           <Logo />
@@ -153,7 +159,6 @@ const NavMenu = () => {
           </div>
 
           <div
-            ref={dropdownRef}
             onClick={() => toggleMenu("news")}
             className={cn(
               "capitalize text-background cursor-pointer border-b-[3px] py-6",
@@ -166,7 +171,6 @@ const NavMenu = () => {
             news
           </div>
 
-          {/* Direct Links */}
           {["pengaduan", "lowongan", "gallery"].map((menu) => (
             <Link
               key={menu}
@@ -187,9 +191,7 @@ const NavMenu = () => {
         </div>
       </div>
 
-      {/* Dropdown Container */}
       <div
-        ref={dropdownRef}
         className={cn(
           "fixed bg-accent-dark top-[75px] left-0 right-0 h-0 max-h-[20rem] overflow-hidden transition-all duration-300",
           { "h-full": activeMenu }
