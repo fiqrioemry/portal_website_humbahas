@@ -108,14 +108,16 @@ const NavMenu = () => {
             </div>
             <div className="col-span-6 text-background">
               {[
-                "cerdas",
-                "nyaman",
-                "sehat",
-                "sejahtera",
-                "terkonesi",
-                "wisata",
+                "humbahas cerdas",
+                "humbahas nyaman",
+                "humbahas sehat",
+                "humbahas sejahtera",
+                "humbahas terkonesi",
+                "humbahas wisata",
               ].map((item) => (
-                <div
+                <Link
+                  to={`/news/${item.split(" ").pop()}`}
+                  onClick={() => toggleMenu("news")}
                   key={item}
                   className="group flex items-center hover:bg-accent h-12 cursor-pointer border-b transition-all"
                 >
@@ -124,7 +126,7 @@ const NavMenu = () => {
                     <span className="capitalize px-4">{item}</span>
                     <ArrowRight />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
