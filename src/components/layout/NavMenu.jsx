@@ -140,7 +140,6 @@ const NavMenu = () => {
           className="hidden md:flex items-center space-x-12"
         >
           <div
-            ref={dropdownRef}
             onClick={() => toggleMenu("profile")}
             className={cn(
               "capitalize text-background cursor-pointer border-b-[3px] py-6",
